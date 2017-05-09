@@ -1,0 +1,21 @@
+﻿@model List< AttendanceSystem.Models.GetString>
+@{
+    ViewBag.Title = "出勤紀錄";
+}
+
+
+<h2>出勤紀錄</h2>
+<table class="table">
+    <thead><tr><td>RFID_UID</td><td>使用者名稱</td><td>時間</td><td>狀態</td></tr></thead>
+    <tbody>
+        @foreach (var pd in this.Model) /* 使用foreach將所有商品列成表格元素 */
+        {
+            <tr>
+                <td>@pd.RFID_UID</td>
+                <td>@pd.UserName</td>
+                <td>@pd.Date</td>
+                <td>@pd.Status</td>
+            </tr>
+        }
+    </tbody>
+</table>
