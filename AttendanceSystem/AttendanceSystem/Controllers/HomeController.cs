@@ -28,9 +28,14 @@ namespace AttendanceSystem.Controllers
         }
         public ActionResult AttendaceRecrod()
         {
+            Services.Service service = new Services.Service();
+
             var RecrodList = new List<AttendanceSystem.Models.GetString>();
-            RecrodList = AttendanceSystem.Models.Service.GetJsonFunction();
-            return View(RecrodList);
+            var MemberList = new List<AttendanceSystem.Models.GetMember>();
+            RecrodList = service.GetJsonFunction();
+            MemberList = service.GetMemberFunction();
+            var Result = service.CompareFunction(RecrodList, MemberList); //AttendanceSystem.Models.Service.GetMemberFunction();
+            return View(Result);
         }
     }
 }
